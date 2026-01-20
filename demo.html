@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ServiceNow Media Viewer - Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Demo page styles to simulate ServiceNow environment */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f1f2f3;
+      min-height: 100vh;
+    }
+
+    .demo-header {
+      background: #293e40;
+      color: white;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .demo-logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: #81b5a1;
+    }
+
+    .demo-nav {
+      display: flex;
+      gap: 8px;
+    }
+
+    .demo-nav-item {
+      padding: 8px 16px;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .demo-nav-item:hover {
+      background: rgba(255,255,255,0.1);
+      color: white;
+    }
+
+    .demo-content {
+      padding: 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .demo-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .demo-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #e5e8eb;
+    }
+
+    .demo-card-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1f2328;
+    }
+
+    .demo-badge {
+      background: #e8f4fc;
+      color: #0b62a4;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .demo-field {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid #f1f2f3;
+    }
+
+    .demo-field:last-child {
+      border-bottom: none;
+    }
+
+    .demo-field-label {
+      color: #5a6872;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .demo-field-value {
+      color: #1f2328;
+      font-size: 14px;
+    }
+
+    .demo-instructions {
+      background: #fffbeb;
+      border: 1px solid #fcd34d;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+    }
+
+    .demo-instructions h3 {
+      color: #92400e;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .demo-instructions p {
+      color: #a16207;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .demo-instructions kbd {
+      background: #fef3c7;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: monospace;
+      font-size: 12px;
+    }
+
+    /* Force trigger button to show */
+    .snmv-trigger {
+      display: flex !important;
+    }
+  </style>
+</head>
+<body>
+  <header class="demo-header">
+    <div class="demo-logo">ServiceNow</div>
+    <nav class="demo-nav">
+      <a href="#" class="demo-nav-item">All</a>
+      <a href="#" class="demo-nav-item">Favorites</a>
+      <a href="#" class="demo-nav-item">History</a>
+    </nav>
+  </header>
+
+  <main class="demo-content">
+    <div class="demo-instructions">
+      <h3>Demo Mode</h3>
+      <p>Click the blue "View Summary" button in the bottom right corner. Use <kbd>←</kbd> <kbd>→</kbd> arrow keys to navigate images. Press <kbd>Enter</kbd> to open lightbox, <kbd>Esc</kbd> to close.</p>
+    </div>
+
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <h2 class="demo-card-title">INC0012345 - Email service not working</h2>
+        <span class="demo-badge">In Progress</span>
+      </div>
+
+      <div class="demo-field">
+        <span class="demo-field-label">Number</span>
+        <span class="demo-field-value">INC0012345</span>
+      </div>
+      <div class="demo-field">
+        <span class="demo-field-label">Caller</span>
+        <span class="demo-field-value">John Smith</span>
+      </div>
+      <div class="demo-field">
+        <span class="demo-field-label">Category</span>
+        <span class="demo-field-value">Email</span>
+      </div>
+      <div class="demo-field">
+        <span class="demo-field-label">Priority</span>
+        <span class="demo-field-value">2 - High</span>
+      </div>
+      <div class="demo-field">
+        <span class="demo-field-label">Assignment group</span>
+        <span class="demo-field-value">IT Support</span>
+      </div>
+      <div class="demo-field">
+        <span class="demo-field-label">Assigned to</span>
+        <span class="demo-field-value">Sarah Johnson</span>
+      </div>
+      <div class="demo-field">
+        <span class="demo-field-label">Short description</span>
+        <span class="demo-field-value">User unable to send or receive emails since this morning</span>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Demo script with mock data
+    (function() {
+      'use strict';
+
+      // SVG Icons
+      const Icons = {
+        gallery: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`,
+        comments: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+        close: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`,
+        clock: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+        download: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`,
+        expand: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>`,
+        refresh: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>`,
+        empty: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg>`,
+        record: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`,
+        chevronLeft: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>`,
+        chevronRight: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>`
+      };
+
+      // Mock data - newest first
+      const mockImages = [
+        { id: '1', name: 'error_screenshot.png', date: new Date(Date.now() - 3600000).toISOString(), url: 'https://picsum.photos/seed/err1/800/600' },
+        { id: '2', name: 'outlook_config.png', date: new Date(Date.now() - 7200000).toISOString(), url: 'https://picsum.photos/seed/out1/800/600' },
+        { id: '3', name: 'network_settings.jpg', date: new Date(Date.now() - 86400000).toISOString(), url: 'https://picsum.photos/seed/net1/800/600' },
+        { id: '4', name: 'email_bounce.png', date: new Date(Date.now() - 172800000).toISOString(), url: 'https://picsum.photos/seed/mail1/800/600' },
+        { id: '5', name: 'server_logs.png', date: new Date(Date.now() - 259200000).toISOString(), url: 'https://picsum.photos/seed/log1/800/600' }
+      ];
+
+      // Mock comments - newest first
+      // Assume current user is "Sarah Johnson" for demo purposes
+      const currentUserName = 'Sarah Johnson';
+
+      const mockComments = [
+        { id: '6', author: 'Sarah Johnson', date: new Date(Date.now() - 7200000).toISOString(), content: 'Hi John, I\'ve reconnected your mailbox. Please restart Outlook and let me know if you can now send and receive emails.', type: 'customer', isCurrentUser: true },
+        { id: '5', author: 'Sarah Johnson', date: new Date(Date.now() - 21600000).toISOString(), content: 'Found the root cause - user\'s mailbox was accidentally disconnected during maintenance. Re-connecting now and will verify with user.', type: 'work_note', isCurrentUser: true },
+        { id: '4', author: 'John Smith', date: new Date(Date.now() - 43200000).toISOString(), content: 'Yes, I get an error saying "Cannot connect to server". I\'ve attached a screenshot of the error message.', type: 'customer', isCurrentUser: false },
+        { id: '3', author: 'Sarah Johnson', date: new Date(Date.now() - 86400000).toISOString(), content: 'Hi John, I\'m looking into this issue. Can you please confirm if you\'re seeing any specific error messages when trying to send emails?', type: 'customer', isCurrentUser: true },
+        { id: '2', author: 'Sarah Johnson', date: new Date(Date.now() - 172800000).toISOString(), content: 'Received ticket from user. Initial assessment: Could be related to the recent Exchange server maintenance. Checking server logs now.', type: 'work_note', isCurrentUser: true },
+        { id: '1', author: 'John Smith', date: new Date(Date.now() - 259200000).toISOString(), content: 'I\'m unable to send or receive emails since this morning. I\'ve tried restarting Outlook but the problem persists. This is urgent as I need to communicate with clients.', type: 'customer', isCurrentUser: false }
+      ];
+
+      let state = {
+        isOpen: false,
+        activeTab: 'images',
+        selectedImageIndex: 0
+      };
+
+      let overlay = null;
+      let lightbox = null;
+
+      function formatDate(dateString) {
+        const date = new Date(dateString);
+        const now = new Date();
+        const diff = now - date;
+
+        if (diff < 86400000) {
+          const hours = Math.floor(diff / 3600000);
+          if (hours < 1) {
+            const mins = Math.floor(diff / 60000);
+            return mins < 1 ? 'Just now' : `${mins}m ago`;
+          }
+          return `${hours}h ago`;
+        }
+
+        if (diff < 604800000) {
+          const days = Math.floor(diff / 86400000);
+          return `${days}d ago`;
+        }
+
+        return date.toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric'
+        });
+      }
+
+      function getInitials(name) {
+        if (!name) return '??';
+        const parts = name.split(/[\s._-]+/);
+        return parts.slice(0, 2).map(p => p[0]).join('').toUpperCase();
+      }
+
+      function selectImage(index) {
+        if (mockImages.length === 0) return;
+
+        // Wrap around
+        if (index < 0) index = mockImages.length - 1;
+        if (index >= mockImages.length) index = 0;
+
+        state.selectedImageIndex = index;
+
+        // Update visual selection
+        const cards = document.querySelectorAll('.snmv-image-card');
+        cards.forEach((card, i) => {
+          card.classList.toggle('snmv-image-selected', i === index);
+        });
+
+        // Scroll into view
+        const selectedCard = cards[index];
+        if (selectedCard) {
+          selectedCard.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+      }
+
+      function updateLightboxCounter() {
+        const counter = document.getElementById('snmv-lightbox-counter');
+        if (counter) {
+          counter.textContent = `${state.selectedImageIndex + 1} / ${mockImages.length}`;
+        }
+      }
+
+      function navigateLightbox(direction) {
+        let newIndex = state.selectedImageIndex + direction;
+        if (newIndex < 0) newIndex = mockImages.length - 1;
+        if (newIndex >= mockImages.length) newIndex = 0;
+
+        state.selectedImageIndex = newIndex;
+        document.getElementById('snmv-lightbox-img').src = mockImages[newIndex].url;
+        updateLightboxCounter();
+
+        // Update gallery selection
+        const cards = document.querySelectorAll('.snmv-image-card');
+        cards.forEach((card, i) => {
+          card.classList.toggle('snmv-image-selected', i === newIndex);
+        });
+      }
+
+      function createModal() {
+        const modalHTML = `
+          <div class="snmv-overlay" id="snmv-overlay">
+            <div class="snmv-modal" role="dialog" aria-modal="true">
+              <header class="snmv-header">
+                <div class="snmv-header-left">
+                  <div class="snmv-icon">${Icons.record}</div>
+                  <div class="snmv-title-group">
+                    <h2 class="snmv-title">Media & Comments</h2>
+                    <p class="snmv-subtitle">INCIDENT</p>
+                  </div>
+                </div>
+                <button class="snmv-close-btn" id="snmv-close">
+                  ${Icons.close}
+                </button>
+              </header>
+
+              <nav class="snmv-tabs" role="tablist">
+                <button class="snmv-tab snmv-tab-active" data-tab="images" role="tab">
+                  ${Icons.gallery}
+                  <span>Images</span>
+                  <span class="snmv-tab-count">${mockImages.length}</span>
+                </button>
+                <button class="snmv-tab" data-tab="comments" role="tab">
+                  ${Icons.comments}
+                  <span>Comments</span>
+                  <span class="snmv-tab-count">${mockComments.length}</span>
+                </button>
+              </nav>
+
+              <div class="snmv-body">
+                <div class="snmv-panel snmv-panel-active" data-panel="images">
+                  <div class="snmv-images-container">
+                    <div class="snmv-images-scroll" id="snmv-images-grid"></div>
+                  </div>
+                </div>
+
+                <div class="snmv-panel" data-panel="comments">
+                  <div class="snmv-comments-container" id="snmv-comments-list"></div>
+                </div>
+              </div>
+
+              <footer class="snmv-footer">
+                <div class="snmv-record-info">
+                  <span class="snmv-record-badge">INC0012345</span>
+                  <span>incident</span>
+                </div>
+                <div class="snmv-footer-actions">
+                  <button class="snmv-btn">
+                    ${Icons.refresh}
+                    <span>Refresh</span>
+                  </button>
+                </div>
+              </footer>
+            </div>
+          </div>
+
+          <div class="snmv-lightbox" id="snmv-lightbox">
+            <button class="snmv-lightbox-close" id="snmv-lightbox-close">
+              ${Icons.close}
+            </button>
+            <button class="snmv-lightbox-nav snmv-lightbox-prev" id="snmv-lightbox-prev" title="Previous (←)">
+              ${Icons.chevronLeft}
+            </button>
+            <img src="" alt="Full size image" id="snmv-lightbox-img">
+            <button class="snmv-lightbox-nav snmv-lightbox-next" id="snmv-lightbox-next" title="Next (→)">
+              ${Icons.chevronRight}
+            </button>
+            <div class="snmv-lightbox-counter" id="snmv-lightbox-counter"></div>
+          </div>
+        `;
+
+        const container = document.createElement('div');
+        container.innerHTML = modalHTML;
+        document.body.appendChild(container);
+
+        overlay = document.getElementById('snmv-overlay');
+        lightbox = document.getElementById('snmv-lightbox');
+
+        document.getElementById('snmv-close').addEventListener('click', closeModal);
+        document.getElementById('snmv-lightbox-close').addEventListener('click', closeLightbox);
+        document.getElementById('snmv-lightbox-prev').addEventListener('click', (e) => {
+          e.stopPropagation();
+          navigateLightbox(-1);
+        });
+        document.getElementById('snmv-lightbox-next').addEventListener('click', (e) => {
+          e.stopPropagation();
+          navigateLightbox(1);
+        });
+        document.getElementById('snmv-lightbox').addEventListener('click', (e) => {
+          if (e.target.id === 'snmv-lightbox') closeLightbox();
+        });
+
+        overlay.addEventListener('click', (e) => {
+          if (e.target === overlay) closeModal();
+        });
+
+        document.querySelectorAll('.snmv-tab').forEach(tab => {
+          tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+          if (!state.isOpen) return;
+
+          if (e.key === 'Escape') {
+            if (lightbox.classList.contains('snmv-active')) {
+              closeLightbox();
+            } else {
+              closeModal();
+            }
+            return;
+          }
+
+          // Arrow keys for images
+          if (state.activeTab === 'images') {
+            if (e.key === 'ArrowRight') {
+              e.preventDefault();
+              if (lightbox.classList.contains('snmv-active')) {
+                navigateLightbox(1);
+              } else {
+                selectImage(state.selectedImageIndex + 1);
+              }
+            } else if (e.key === 'ArrowLeft') {
+              e.preventDefault();
+              if (lightbox.classList.contains('snmv-active')) {
+                navigateLightbox(-1);
+              } else {
+                selectImage(state.selectedImageIndex - 1);
+              }
+            } else if (e.key === 'Enter' && !lightbox.classList.contains('snmv-active')) {
+              e.preventDefault();
+              openLightbox(mockImages[state.selectedImageIndex].url);
+            }
+          }
+        });
+
+        renderImages();
+        renderComments();
+      }
+
+      function createTriggerButton() {
+        const btn = document.createElement('button');
+        btn.className = 'snmv-trigger';
+        btn.innerHTML = `${Icons.gallery} <span>View Summary</span>`;
+        btn.addEventListener('click', openModal);
+        document.body.appendChild(btn);
+      }
+
+      function switchTab(tabName) {
+        state.activeTab = tabName;
+
+        document.querySelectorAll('.snmv-tab').forEach(tab => {
+          const isActive = tab.dataset.tab === tabName;
+          tab.classList.toggle('snmv-tab-active', isActive);
+        });
+
+        document.querySelectorAll('.snmv-panel').forEach(panel => {
+          panel.classList.toggle('snmv-panel-active', panel.dataset.panel === tabName);
+        });
+
+        if (tabName === 'images') {
+          selectImage(0);
+        }
+      }
+
+      function renderImages() {
+        const container = document.getElementById('snmv-images-grid');
+
+        container.innerHTML = mockImages.map((img, index) => `
+          <div class="snmv-image-card ${index === 0 ? 'snmv-image-selected' : ''}" data-id="${img.id}" data-index="${index}">
+            <div class="snmv-image-wrapper">
+              <img src="${img.url}" alt="${img.name}" loading="lazy">
+              <div class="snmv-image-overlay">
+                <div class="snmv-image-actions">
+                  <button class="snmv-image-action" data-action="expand" title="View full size">
+                    ${Icons.expand}
+                  </button>
+                  <a class="snmv-image-action" href="${img.url}" download="${img.name}" title="Download">
+                    ${Icons.download}
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="snmv-image-meta">
+              <p class="snmv-image-name">${img.name}</p>
+              <p class="snmv-image-date">
+                ${Icons.clock}
+                ${formatDate(img.date)}
+              </p>
+            </div>
+          </div>
+        `).join('');
+
+        container.querySelectorAll('.snmv-image-card').forEach((card, index) => {
+          card.addEventListener('click', () => {
+            state.selectedImageIndex = index;
+            openLightbox(mockImages[index].url);
+          });
+        });
+      }
+
+      function renderComments() {
+        const container = document.getElementById('snmv-comments-list');
+        const typeLabels = {
+          'work_note': 'Work Note',
+          'customer': 'Customer',
+          'comment': 'Comment'
+        };
+
+        container.innerHTML = `
+          <div class="snmv-timeline">
+            ${mockComments.map((comment, index) => `
+              <div class="snmv-comment snmv-comment-${comment.type}${comment.isCurrentUser ? ' snmv-comment-mine' : ''}" style="animation-delay: ${index * 50}ms">
+                <div class="snmv-comment-dot"></div>
+                <div class="snmv-comment-card">
+                  <div class="snmv-comment-header">
+                    <div class="snmv-comment-author">
+                      <div class="snmv-avatar${comment.isCurrentUser ? ' snmv-avatar-mine' : ''}">${getInitials(comment.author)}</div>
+                      <div class="snmv-author-info">
+                        <span class="snmv-author-name">${comment.author}${comment.isCurrentUser ? ' <span class="snmv-you-badge">You</span>' : ''}</span>
+                        <span class="snmv-comment-time">${formatDate(comment.date)}</span>
+                      </div>
+                    </div>
+                    <span class="snmv-comment-type snmv-type-${comment.type}">${typeLabels[comment.type]}</span>
+                  </div>
+                  <div class="snmv-comment-body">
+                    <p>${comment.content}</p>
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      function openModal() {
+        state.isOpen = true;
+        overlay.classList.add('snmv-active');
+        document.body.style.overflow = 'hidden';
+        selectImage(0);
+      }
+
+      function closeModal() {
+        state.isOpen = false;
+        overlay.classList.remove('snmv-active');
+        document.body.style.overflow = '';
+      }
+
+      function openLightbox(url) {
+        document.getElementById('snmv-lightbox-img').src = url;
+        lightbox.classList.add('snmv-active');
+        updateLightboxCounter();
+
+        const cards = document.querySelectorAll('.snmv-image-card');
+        cards.forEach((card, i) => {
+          card.classList.toggle('snmv-image-selected', i === state.selectedImageIndex);
+        });
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('snmv-active');
+        document.getElementById('snmv-lightbox-img').src = '';
+      }
+
+      // Initialize
+      createModal();
+      createTriggerButton();
+    })();
+  </script>
+</body>
+</html>

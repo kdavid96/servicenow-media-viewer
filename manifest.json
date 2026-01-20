@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "ServiceNow Media & Comments Viewer",
+  "version": "1.0.0",
+  "description": "View all images and comments from incidents and tasks in a unified modal",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["*://*.service-now.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["*://*.service-now.com/*"],
+      "css": ["styles.css"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "View Media & Comments"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
